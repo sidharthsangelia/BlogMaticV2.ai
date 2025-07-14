@@ -2,14 +2,11 @@ import React from 'react';
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { getFormData } from '@/actions/getFormData';
 
 export default function EnhancedFormInputs() {
   return (
     <div className="space-y-6 max-w-2xl mx-auto">
       {/* Content Variation */}
-
-      <form action={getFormData}>
       <div className="space-y-3">
         <Label htmlFor="variation" className="text-sm font-medium">
           Content Variation
@@ -67,8 +64,7 @@ export default function EnhancedFormInputs() {
             <SelectItem value="academics">Academics & Researchers</SelectItem>
           </SelectContent>
         </Select>
-      </div></form>
+      </div>
     </div>
-    
   );
 }

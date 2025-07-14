@@ -23,7 +23,7 @@ export const ourFileRouter = {
     .onUploadComplete(async ({ metadata, file }) => {
       // runs on the server after upload completes
       console.log("✅ Upload complete for user:", metadata.userId);
-      console.log("📂 Public URL:", file.url); // ← use this in the client
+      console.log("📂 Public URL:", file.ufsUrl); // ← use this in the client
       return {
         uploadedBy: metadata.userId,
         url: file.ufsUrl,        // send back to client-side callback
@@ -32,3 +32,32 @@ export const ourFileRouter = {
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;
+
+
+// import { createUploadthing, type FileRouter } from "uploadthing/next";
+// import { inngest } from "@/lib/inngest/client";
+// import { JobManager } from "@/lib/services/job-manager";
+// import { nanoid } from "nanoid";
+
+// const f = createUploadthing();
+
+// export const ourFileRouter = {
+//   videoUploader: f({ 
+//     video: { maxFileSize: "512MB", maxFileCount: 1 } 
+//   })
+//     .middleware(async () => {
+//       return { userId: "user_123" }; // Add auth later
+//     })
+//     .onUploadComplete(async ({ metadata, file }) => {
+//       console.log("Upload complete:", file.url);
+      
+//       // Don't process immediately - just return the URL
+//       // Processing will be triggered from the frontend
+//       return { 
+//         uploadedBy: metadata.userId,
+//         ufsUrl: file.url // Keep your existing property name
+//       };
+//     }),
+// } satisfies FileRouter;
+
+// export type OurFileRouter = typeof ourFileRouter;
